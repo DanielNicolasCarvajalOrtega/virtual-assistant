@@ -11,6 +11,7 @@ def major():
 def hello():
     try:
         key = request.args.get('key') # obtener parametro key de la URL
+        print(key)
         if key:
             data = api.data.get(key) # si esa key exite en data obitiene el valor
             if data:
@@ -23,4 +24,4 @@ def hello():
         return f"error {e}"
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
