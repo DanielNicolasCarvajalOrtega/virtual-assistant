@@ -1,6 +1,5 @@
 import pytest
-from venv import main
-from flask import Flask
+from flask import Flask, testing
 
 app = Flask(__name__)
 @pytest.fixture     # funcion que proporciona un entorno de prueba preconfigurado
