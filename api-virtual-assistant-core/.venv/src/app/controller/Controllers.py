@@ -21,6 +21,21 @@ def hello(service: AssistantService):
     except Exception as e:
         return f"error {e}"
 
+@app.route("/v1/virtual-assistant-core/menu", methods=['GET'])
+def menu_functions(service: AssistantService):
+    try:
+        key = request.args.get('key')
+        if key:
+            data = next((item for item in service.get_menu() if item["id"] == key), None)  # ITERAR SOBRE UNA ESTUCTURA DE DATOs
+            if data:
+                return jsonify({key: data})
+            else:
+                return jsonify({f"error": "Not Found"}), 404
+        return service.get_menu()
+
+    except:
+        return service.get_handle_exception()
+
 
 # Dependency configurations
 def configure(binder):

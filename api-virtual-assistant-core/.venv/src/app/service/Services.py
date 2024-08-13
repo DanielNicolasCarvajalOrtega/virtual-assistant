@@ -9,3 +9,9 @@ class AssistantService:
     def get_welcome(self):
         return self.repository.get_welcome()
 
+    def get_menu(self):
+        return self.repository.get_menu()
+
+    def get_handle_exception(self):
+        return self.repository.handle_exception()
+
