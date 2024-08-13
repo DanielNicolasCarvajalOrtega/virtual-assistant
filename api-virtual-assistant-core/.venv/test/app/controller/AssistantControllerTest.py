@@ -1,5 +1,5 @@
 import pytest
-from flask import Flask, testing
+from flask import Flask
 
 app = Flask(__name__)
 @pytest.fixture     # funcion que proporciona un entorno de prueba preconfigurado
@@ -16,6 +16,7 @@ def test_major(client):
         assert response.data.decode() == "Hello World!"
     except AssertionError as e:
         print(f"Error of Assertion {e}")
+
 def test_hello_without_key(client):
     try:
         response = client.get('/v1/virtual-assistant-core/welcome')
@@ -23,6 +24,7 @@ def test_hello_without_key(client):
         assert 'welcome' in response.get_json()
     except AssertionError as e:
         print(f"Error of Assertion {e}")
+
 def test_hello_with_valid_key(client):
     try:
         response = client.get('/v1/virtual-assistant-core/welcome?key=welcome')
@@ -32,6 +34,7 @@ def test_hello_with_valid_key(client):
         }
     except AssertionError as e:
         print(f"Error of Assertion {e}")
+
 def test_hello_with_invalid_key(client):
     try:
         response = client.get('/v1/virtual-assistant-core/welcome?key=invalid')

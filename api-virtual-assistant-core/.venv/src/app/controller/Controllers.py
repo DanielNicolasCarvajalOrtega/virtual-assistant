@@ -22,11 +22,11 @@ def hello(service: AssistantService):
         return f"error {e}"
 
 @app.route("/v1/virtual-assistant-core/menu", methods=['GET'])
-def menu_functions(service: AssistantService):
+def menu_functions(service: AssistantService, model: AssistantRepository):
     try:
         key = request.args.get('key')
         if key:
-            data = next((item for item in service.get_menu() if item["id"] == key), None)  # ITERAR SOBRE UNA ESTUCTURA DE DATOs
+            data = next((item for item in model.menu if item["id"] == key), None)  # ITERAR SOBRE UNA ESTUCTURA DE DATOs
             if data:
                 return jsonify({key: data})
             else:
