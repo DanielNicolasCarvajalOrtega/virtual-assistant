@@ -1,4 +1,4 @@
-from src.app.model.Repositories import AssistantRepository
+from app.model.Repositories import AssistantRepository
 import pyttsx3
 
 

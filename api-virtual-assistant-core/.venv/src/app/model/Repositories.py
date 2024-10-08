@@ -49,6 +49,19 @@ class AssistantRepository:
     def get_menu(self):
         return jsonify(self.menu)
 
+
+    def get_welcome_text_to_speech(self):
+        return self.welcome["welcome"]
+
+
+    def get_menu_text_to_speech(self):
+        menu = "\n".join(map(self.get_type, self.menu))
+        format_menu = menu.replace("_"," ")
+        return format_menu
+
+    def get_type(self,item):
+        return item["type"]
+
     @app.errorhandler(500)
     def handle_exception(e):
         response = {
