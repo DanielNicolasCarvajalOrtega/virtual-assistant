@@ -1,7 +1,7 @@
 import speech_recognition as sr
 from googletrans import Translator
 import time
-from src.app.functions.text_to_speech import config
+from app.functions.text_to_speech import config
 
 
 translator = Translator()
