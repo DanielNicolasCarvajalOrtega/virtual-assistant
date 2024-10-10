@@ -1,14 +1,13 @@
-from app.model.Repositories import AssistantRepository
 from app.functions.text_to_speech import config
+from app.credentials import api_keys as cred
 from googleapiclient.discovery import build
 import speech_recognition as sr
 import webbrowser
 
-
 voice_say = config()
 recognizer = sr.Recognizer()
-youtube_api_key = "AIzaSyAZziCEkXYO_2hxHvLcNox2Kz7fNrq87ME"
-youtube = build("youtube", "v3", developerKey=youtube_api_key)
+yt_api_key = cred.youtube_api_key
+youtube = build("youtube", "v3", developerKey=yt_api_key)
 def listen_commands():
     with sr.Microphone() as source:
         print("Listening...")
